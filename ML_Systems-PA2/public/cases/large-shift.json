@@ -1,0 +1,688 @@
+{
+  "schema": "pa2-fixed-cluster-v6-async-dispatch",
+  "id": "fixed_learning_400b_shift_standard_s101",
+  "family": "shift",
+  "model_size": "400b",
+  "network": "standard",
+  "seed": 101,
+  "split": "public",
+  "tier": "learning-v3",
+  "model": {
+    "name": "teaching-400b",
+    "layers": 128,
+    "hidden_size": 16384,
+    "kv_heads": 16,
+    "head_dim": 128,
+    "layer_weight_bytes": 6200000000,
+    "embedding_weight_bytes": 3200000000,
+    "output_weight_bytes": 3200000000,
+    "dtype_bytes": 2
+  },
+  "hardware": {
+    "gpu_count": 32,
+    "gpus_per_node": 8,
+    "memory_bytes": 80000000000,
+    "compute_tflops": 150.0,
+    "hbm_bandwidth_gbps": 1500.0,
+    "intra_bandwidth_gbps": 200.0,
+    "inter_bandwidth_gbps": 25.0,
+    "intra_latency_ns": 500,
+    "inter_latency_ns": 5000
+  },
+  "slo": {
+    "chat": {
+      "ttft_ns": 32000000000,
+      "p95_itl_ns": 1400000000
+    },
+    "rag": {
+      "ttft_ns": 140000000000,
+      "p95_itl_ns": 2800000000
+    },
+    "long": {
+      "ttft_ns": 480000000000,
+      "p95_itl_ns": 8000000000
+    }
+  },
+  "allowed_batches": [
+    1,
+    2,
+    4,
+    8,
+    16
+  ],
+  "forecast": {
+    "expected_request_count": 42.0,
+    "request_count_range": [
+      36,
+      48
+    ],
+    "class_probabilities": {
+      "chat": 0.5333333333333333,
+      "rag": 0.25,
+      "long": 0.21666666666666667
+    },
+    "epochs": [
+      {
+        "expected_requests": 14.0,
+        "expected_gap_ns": 10800000000,
+        "class_probabilities": {
+          "chat": 0.8,
+          "rag": 0.15,
+          "long": 0.05
+        }
+      },
+      {
+        "expected_requests": 14.0,
+        "expected_gap_ns": 2100000000,
+        "class_probabilities": {
+          "chat": 0.2,
+          "rag": 0.35,
+          "long": 0.45
+        }
+      },
+      {
+        "expected_requests": 14.0,
+        "expected_gap_ns": 4800000000,
+        "class_probabilities": {
+          "chat": 0.6,
+          "rag": 0.25,
+          "long": 0.15
+        }
+      }
+    ],
+    "class_uncertainty": "Independently in each epoch: latent class probabilities ~ Dirichlet(40.0 * forecast probabilities); each request class is an independent categorical draw. No exact class counts are exposed.",
+    "rate_uncertainty": "Each epoch gap scale is forecast * Uniform(0.7,1.3). Cohort size is uniform in {1,2,4}; inter-cohort gap is cohort * latent gap * Uniform(0.8,1.2).",
+    "mean_arrival_gap_ns": 5900000000,
+    "forecast_arrival_rate_requests_per_s": 0.1694915254237288,
+    "mean_gap_description": "Nominal average across forecast epochs, not the realized finite-trace mean; scoring does not use this estimate.",
+    "length_mix": [
+      {
+        "prompt_tokens": 256,
+        "max_output_tokens": 64,
+        "fraction": 0.08888888888888889
+      },
+      {
+        "prompt_tokens": 256,
+        "max_output_tokens": 128,
+        "fraction": 0.08888888888888889
+      },
+      {
+        "prompt_tokens": 512,
+        "max_output_tokens": 64,
+        "fraction": 0.08888888888888889
+      },
+      {
+        "prompt_tokens": 512,
+        "max_output_tokens": 128,
+        "fraction": 0.08888888888888889
+      },
+      {
+        "prompt_tokens": 1024,
+        "max_output_tokens": 64,
+        "fraction": 0.08888888888888889
+      },
+      {
+        "prompt_tokens": 1024,
+        "max_output_tokens": 128,
+        "fraction": 0.08888888888888889
+      },
+      {
+        "prompt_tokens": 2048,
+        "max_output_tokens": 128,
+        "fraction": 0.041666666666666664
+      },
+      {
+        "prompt_tokens": 2048,
+        "max_output_tokens": 256,
+        "fraction": 0.041666666666666664
+      },
+      {
+        "prompt_tokens": 4096,
+        "max_output_tokens": 128,
+        "fraction": 0.041666666666666664
+      },
+      {
+        "prompt_tokens": 4096,
+        "max_output_tokens": 256,
+        "fraction": 0.041666666666666664
+      },
+      {
+        "prompt_tokens": 8192,
+        "max_output_tokens": 128,
+        "fraction": 0.041666666666666664
+      },
+      {
+        "prompt_tokens": 8192,
+        "max_output_tokens": 256,
+        "fraction": 0.041666666666666664
+      },
+      {
+        "prompt_tokens": 16384,
+        "max_output_tokens": 256,
+        "fraction": 0.05416666666666667
+      },
+      {
+        "prompt_tokens": 16384,
+        "max_output_tokens": 512,
+        "fraction": 0.05416666666666667
+      },
+      {
+        "prompt_tokens": 32768,
+        "max_output_tokens": 256,
+        "fraction": 0.05416666666666667
+      },
+      {
+        "prompt_tokens": 32768,
+        "max_output_tokens": 512,
+        "fraction": 0.05416666666666667
+      }
+    ],
+    "length_mix_description": "Prior probabilities, not realized counts. Uniform independent prompt and cap choices conditional on class.",
+    "actual_output_ranges": {
+      "chat": [
+        16,
+        32
+      ],
+      "rag": [
+        24,
+        48
+      ],
+      "long": [
+        32,
+        64
+      ]
+    },
+    "output_contract": "EOS is uniform integer within its class range, independent of cap and arrival; hidden until completion. MAX cap is visible. Sparse diagnostics use 4..8.",
+    "arrival_pattern": "Three consecutive epochs, 12..16 requests each. Epoch boundaries are not signalled online. Co-arrivals route sequentially with immediate memory reservation."
+  },
+  "requests": [
+    {
+      "id": "q0000",
+      "arrival_ns": 0,
+      "prompt_tokens": 1024,
+      "max_output_tokens": 128,
+      "output_tokens": 24,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0001",
+      "arrival_ns": 0,
+      "prompt_tokens": 1024,
+      "max_output_tokens": 128,
+      "output_tokens": 24,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0002",
+      "arrival_ns": 0,
+      "prompt_tokens": 512,
+      "max_output_tokens": 64,
+      "output_tokens": 20,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0003",
+      "arrival_ns": 0,
+      "prompt_tokens": 512,
+      "max_output_tokens": 128,
+      "output_tokens": 24,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0004",
+      "arrival_ns": 43515303396,
+      "prompt_tokens": 1024,
+      "max_output_tokens": 128,
+      "output_tokens": 21,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0005",
+      "arrival_ns": 43515303396,
+      "prompt_tokens": 16384,
+      "max_output_tokens": 256,
+      "output_tokens": 64,
+      "ttft_goal_ns": 480000000000,
+      "itl_goal_ns": 8000000000,
+      "class": "long"
+    },
+    {
+      "id": "q0006",
+      "arrival_ns": 43515303396,
+      "prompt_tokens": 1024,
+      "max_output_tokens": 128,
+      "output_tokens": 18,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0007",
+      "arrival_ns": 43515303396,
+      "prompt_tokens": 512,
+      "max_output_tokens": 64,
+      "output_tokens": 25,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0008",
+      "arrival_ns": 84467163285,
+      "prompt_tokens": 1024,
+      "max_output_tokens": 64,
+      "output_tokens": 29,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0009",
+      "arrival_ns": 84467163285,
+      "prompt_tokens": 256,
+      "max_output_tokens": 64,
+      "output_tokens": 19,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0010",
+      "arrival_ns": 84467163285,
+      "prompt_tokens": 4096,
+      "max_output_tokens": 256,
+      "output_tokens": 37,
+      "ttft_goal_ns": 140000000000,
+      "itl_goal_ns": 2800000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0011",
+      "arrival_ns": 84467163285,
+      "prompt_tokens": 512,
+      "max_output_tokens": 128,
+      "output_tokens": 27,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0012",
+      "arrival_ns": 123165278021,
+      "prompt_tokens": 32768,
+      "max_output_tokens": 512,
+      "output_tokens": 33,
+      "ttft_goal_ns": 480000000000,
+      "itl_goal_ns": 8000000000,
+      "class": "long"
+    },
+    {
+      "id": "q0013",
+      "arrival_ns": 131214995636,
+      "prompt_tokens": 1024,
+      "max_output_tokens": 64,
+      "output_tokens": 17,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0014",
+      "arrival_ns": 131214995636,
+      "prompt_tokens": 4096,
+      "max_output_tokens": 128,
+      "output_tokens": 29,
+      "ttft_goal_ns": 140000000000,
+      "itl_goal_ns": 2800000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0015",
+      "arrival_ns": 131214995636,
+      "prompt_tokens": 512,
+      "max_output_tokens": 128,
+      "output_tokens": 18,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0016",
+      "arrival_ns": 131214995636,
+      "prompt_tokens": 32768,
+      "max_output_tokens": 256,
+      "output_tokens": 34,
+      "ttft_goal_ns": 480000000000,
+      "itl_goal_ns": 8000000000,
+      "class": "long"
+    },
+    {
+      "id": "q0017",
+      "arrival_ns": 138869566567,
+      "prompt_tokens": 2048,
+      "max_output_tokens": 256,
+      "output_tokens": 26,
+      "ttft_goal_ns": 140000000000,
+      "itl_goal_ns": 2800000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0018",
+      "arrival_ns": 138869566567,
+      "prompt_tokens": 4096,
+      "max_output_tokens": 128,
+      "output_tokens": 39,
+      "ttft_goal_ns": 140000000000,
+      "itl_goal_ns": 2800000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0019",
+      "arrival_ns": 138869566567,
+      "prompt_tokens": 32768,
+      "max_output_tokens": 512,
+      "output_tokens": 44,
+      "ttft_goal_ns": 480000000000,
+      "itl_goal_ns": 8000000000,
+      "class": "long"
+    },
+    {
+      "id": "q0020",
+      "arrival_ns": 138869566567,
+      "prompt_tokens": 2048,
+      "max_output_tokens": 256,
+      "output_tokens": 27,
+      "ttft_goal_ns": 140000000000,
+      "itl_goal_ns": 2800000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0021",
+      "arrival_ns": 147773300430,
+      "prompt_tokens": 32768,
+      "max_output_tokens": 256,
+      "output_tokens": 44,
+      "ttft_goal_ns": 480000000000,
+      "itl_goal_ns": 8000000000,
+      "class": "long"
+    },
+    {
+      "id": "q0022",
+      "arrival_ns": 147773300430,
+      "prompt_tokens": 16384,
+      "max_output_tokens": 512,
+      "output_tokens": 41,
+      "ttft_goal_ns": 480000000000,
+      "itl_goal_ns": 8000000000,
+      "class": "long"
+    },
+    {
+      "id": "q0023",
+      "arrival_ns": 147773300430,
+      "prompt_tokens": 32768,
+      "max_output_tokens": 512,
+      "output_tokens": 50,
+      "ttft_goal_ns": 480000000000,
+      "itl_goal_ns": 8000000000,
+      "class": "long"
+    },
+    {
+      "id": "q0024",
+      "arrival_ns": 147773300430,
+      "prompt_tokens": 32768,
+      "max_output_tokens": 256,
+      "output_tokens": 42,
+      "ttft_goal_ns": 480000000000,
+      "itl_goal_ns": 8000000000,
+      "class": "long"
+    },
+    {
+      "id": "q0025",
+      "arrival_ns": 156244717258,
+      "prompt_tokens": 2048,
+      "max_output_tokens": 256,
+      "output_tokens": 25,
+      "ttft_goal_ns": 140000000000,
+      "itl_goal_ns": 2800000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0026",
+      "arrival_ns": 156244717258,
+      "prompt_tokens": 16384,
+      "max_output_tokens": 512,
+      "output_tokens": 46,
+      "ttft_goal_ns": 480000000000,
+      "itl_goal_ns": 8000000000,
+      "class": "long"
+    },
+    {
+      "id": "q0027",
+      "arrival_ns": 156244717258,
+      "prompt_tokens": 8192,
+      "max_output_tokens": 128,
+      "output_tokens": 37,
+      "ttft_goal_ns": 140000000000,
+      "itl_goal_ns": 2800000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0028",
+      "arrival_ns": 156244717258,
+      "prompt_tokens": 16384,
+      "max_output_tokens": 512,
+      "output_tokens": 61,
+      "ttft_goal_ns": 480000000000,
+      "itl_goal_ns": 8000000000,
+      "class": "long"
+    },
+    {
+      "id": "q0029",
+      "arrival_ns": 171210000603,
+      "prompt_tokens": 256,
+      "max_output_tokens": 64,
+      "output_tokens": 22,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0030",
+      "arrival_ns": 171210000603,
+      "prompt_tokens": 1024,
+      "max_output_tokens": 128,
+      "output_tokens": 23,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0031",
+      "arrival_ns": 171210000603,
+      "prompt_tokens": 512,
+      "max_output_tokens": 64,
+      "output_tokens": 31,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0032",
+      "arrival_ns": 171210000603,
+      "prompt_tokens": 1024,
+      "max_output_tokens": 64,
+      "output_tokens": 25,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0033",
+      "arrival_ns": 182964997616,
+      "prompt_tokens": 512,
+      "max_output_tokens": 64,
+      "output_tokens": 18,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0034",
+      "arrival_ns": 182964997616,
+      "prompt_tokens": 512,
+      "max_output_tokens": 128,
+      "output_tokens": 26,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0035",
+      "arrival_ns": 182964997616,
+      "prompt_tokens": 2048,
+      "max_output_tokens": 256,
+      "output_tokens": 48,
+      "ttft_goal_ns": 140000000000,
+      "itl_goal_ns": 2800000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0036",
+      "arrival_ns": 182964997616,
+      "prompt_tokens": 512,
+      "max_output_tokens": 64,
+      "output_tokens": 17,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0037",
+      "arrival_ns": 199534902544,
+      "prompt_tokens": 4096,
+      "max_output_tokens": 256,
+      "output_tokens": 40,
+      "ttft_goal_ns": 140000000000,
+      "itl_goal_ns": 2800000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0038",
+      "arrival_ns": 199534902544,
+      "prompt_tokens": 256,
+      "max_output_tokens": 128,
+      "output_tokens": 17,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0039",
+      "arrival_ns": 199534902544,
+      "prompt_tokens": 256,
+      "max_output_tokens": 64,
+      "output_tokens": 27,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0040",
+      "arrival_ns": 199534902544,
+      "prompt_tokens": 32768,
+      "max_output_tokens": 256,
+      "output_tokens": 42,
+      "ttft_goal_ns": 480000000000,
+      "itl_goal_ns": 8000000000,
+      "class": "long"
+    },
+    {
+      "id": "q0041",
+      "arrival_ns": 215236634179,
+      "prompt_tokens": 512,
+      "max_output_tokens": 64,
+      "output_tokens": 28,
+      "ttft_goal_ns": 32000000000,
+      "itl_goal_ns": 1400000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0042",
+      "arrival_ns": 215236634179,
+      "prompt_tokens": 4096,
+      "max_output_tokens": 256,
+      "output_tokens": 32,
+      "ttft_goal_ns": 140000000000,
+      "itl_goal_ns": 2800000000,
+      "class": "rag"
+    }
+  ],
+  "offline_workload_diagnostics": {
+    "epochs": [
+      {
+        "epoch": 0,
+        "first_request_index": 0,
+        "count": 13,
+        "arrival_start_ns": 0,
+        "arrival_end_ns": 123165278021,
+        "latent_class_probabilities": {
+          "chat": 0.7365257374163747,
+          "rag": 0.1773722949021956,
+          "long": 0.08610196768142969
+        },
+        "latent_gap_ns": 10341618731.735186,
+        "cohort_size": 4
+      },
+      {
+        "epoch": 1,
+        "first_request_index": 13,
+        "count": 16,
+        "arrival_start_ns": 131214995636,
+        "arrival_end_ns": 156244717258,
+        "latent_class_probabilities": {
+          "chat": 0.2130912827457335,
+          "rag": 0.4139519777204558,
+          "long": 0.3729567395338107
+        },
+        "latent_gap_ns": 2084126219.4540026,
+        "cohort_size": 4
+      },
+      {
+        "epoch": 2,
+        "first_request_index": 29,
+        "count": 14,
+        "arrival_start_ns": 171210000603,
+        "arrival_end_ns": 215236634179,
+        "latent_class_probabilities": {
+          "chat": 0.6888840471941147,
+          "rag": 0.21324377966145583,
+          "long": 0.09787217314442953
+        },
+        "latent_gap_ns": 3462692426.1794634,
+        "cohort_size": 4
+      }
+    ],
+    "visibility": "For offline inspection only. load_case_spec whitelists fields; these realized conditions never enter callbacks."
+  },
+  "assumptions": {
+    "source": "Synthetic teaching architectures and traffic; effective rates, not measured GPU benchmarks.",
+    "purpose": "Chat, context surge, then recovery",
+    "bandwidth_unit": "Decimal GB/s despite _gbps suffix.",
+    "compute_profile": "pa2-roofline-v4-microbatch-padding",
+    "admission": "Reserve prompt + MAX output cap; release at EOS. Not PagedAttention.",
+    "paged_attention": false,
+    "eviction_or_recompute": false,
+    "shared_fabric_contention": false,
+    "same_mechanisms": "Grader changes seed only. Forecast uncertainty and within-trace load changes use this identical law."
+  }
+}

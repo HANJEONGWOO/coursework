@@ -1,0 +1,1836 @@
+{
+  "schema": "serving-lab-input-v1",
+  "case_id": "changing_mix_s7",
+  "version": "pa1-arena-v2",
+  "split": "practice",
+  "config": {
+    "budget": 16,
+    "prefill_cap": 8,
+    "block_size": 4,
+    "capacity_blocks": 128,
+    "max_active": 8,
+    "prefill_rate": 4.0,
+    "decode_base": 1.0,
+    "decode_per_request": 0.05,
+    "max_iterations": 60000,
+    "output_bound": 48
+  },
+  "requests": [
+    {
+      "id": "q69506597",
+      "arrival": 0.0,
+      "prompt": 15,
+      "output": 11,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q92447734",
+      "arrival": 3.913148,
+      "prompt": 16,
+      "output": 5,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q38014119",
+      "arrival": 5.548333,
+      "prompt": 15,
+      "output": 6,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q54062714",
+      "arrival": 16.073289,
+      "prompt": 16,
+      "output": 11,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q84765125",
+      "arrival": 16.825227,
+      "prompt": 7,
+      "output": 4,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q90667954",
+      "arrival": 24.501392,
+      "prompt": 4,
+      "output": 4,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q88850685",
+      "arrival": 29.053549,
+      "prompt": 8,
+      "output": 5,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q20758755",
+      "arrival": 29.651038,
+      "prompt": 9,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q71457588",
+      "arrival": 36.732341,
+      "prompt": 13,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q80793202",
+      "arrival": 37.114508,
+      "prompt": 4,
+      "output": 12,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q21711997",
+      "arrival": 42.799862,
+      "prompt": 10,
+      "output": 9,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q19470658",
+      "arrival": 43.524015,
+      "prompt": 6,
+      "output": 5,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q83773548",
+      "arrival": 44.47496,
+      "prompt": 7,
+      "output": 5,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q52484563",
+      "arrival": 50.000454,
+      "prompt": 41,
+      "output": 9,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q17720757",
+      "arrival": 67.536547,
+      "prompt": 5,
+      "output": 12,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q99888495",
+      "arrival": 68.858178,
+      "prompt": 15,
+      "output": 4,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q29251939",
+      "arrival": 71.384403,
+      "prompt": 12,
+      "output": 6,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q38223564",
+      "arrival": 81.257793,
+      "prompt": 4,
+      "output": 11,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q29338688",
+      "arrival": 110.767092,
+      "prompt": 13,
+      "output": 4,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q47417317",
+      "arrival": 119.373358,
+      "prompt": 13,
+      "output": 8,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q94443910",
+      "arrival": 124.426441,
+      "prompt": 6,
+      "output": 9,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q63699109",
+      "arrival": 161.830318,
+      "prompt": 5,
+      "output": 7,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q51351568",
+      "arrival": 162.307344,
+      "prompt": 15,
+      "output": 6,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q99830511",
+      "arrival": 181.859671,
+      "prompt": 7,
+      "output": 7,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q14868319",
+      "arrival": 185.279072,
+      "prompt": 7,
+      "output": 9,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q22244504",
+      "arrival": 186.836902,
+      "prompt": 12,
+      "output": 9,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q61356668",
+      "arrival": 188.090179,
+      "prompt": 8,
+      "output": 8,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q55050896",
+      "arrival": 191.778837,
+      "prompt": 7,
+      "output": 5,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q99234944",
+      "arrival": 208.713902,
+      "prompt": 9,
+      "output": 11,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q70281335",
+      "arrival": 210.707274,
+      "prompt": 8,
+      "output": 7,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q83739858",
+      "arrival": 219.420451,
+      "prompt": 12,
+      "output": 6,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q63401102",
+      "arrival": 229.606828,
+      "prompt": 11,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q62840143",
+      "arrival": 234.265311,
+      "prompt": 6,
+      "output": 12,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q92968614",
+      "arrival": 242.20039,
+      "prompt": 5,
+      "output": 6,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q92438281",
+      "arrival": 242.848858,
+      "prompt": 16,
+      "output": 5,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q96196459",
+      "arrival": 243.463371,
+      "prompt": 16,
+      "output": 7,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q39883529",
+      "arrival": 245.769569,
+      "prompt": 11,
+      "output": 6,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q50095336",
+      "arrival": 257.176419,
+      "prompt": 12,
+      "output": 4,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q55229632",
+      "arrival": 262.755456,
+      "prompt": 6,
+      "output": 9,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q89138698",
+      "arrival": 266.526378,
+      "prompt": 10,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q64741961",
+      "arrival": 275.334694,
+      "prompt": 15,
+      "output": 6,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q79930527",
+      "arrival": 281.37113,
+      "prompt": 6,
+      "output": 11,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q88875448",
+      "arrival": 284.934552,
+      "prompt": 16,
+      "output": 9,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q75692923",
+      "arrival": 300.751781,
+      "prompt": 6,
+      "output": 7,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q13450283",
+      "arrival": 312.758046,
+      "prompt": 7,
+      "output": 11,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q35067314",
+      "arrival": 315.556462,
+      "prompt": 16,
+      "output": 4,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q18184498",
+      "arrival": 324.099573,
+      "prompt": 10,
+      "output": 4,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q33156870",
+      "arrival": 331.548115,
+      "prompt": 16,
+      "output": 11,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q62931144",
+      "arrival": 352.353536,
+      "prompt": 6,
+      "output": 11,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q52101385",
+      "arrival": 365.426346,
+      "prompt": 12,
+      "output": 12,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q96888675",
+      "arrival": 368.822245,
+      "prompt": 6,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q54665922",
+      "arrival": 408.030283,
+      "prompt": 45,
+      "output": 7,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q89029173",
+      "arrival": 409.286661,
+      "prompt": 15,
+      "output": 11,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q97309664",
+      "arrival": 414.70162,
+      "prompt": 11,
+      "output": 12,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q95932778",
+      "arrival": 428.85436,
+      "prompt": 37,
+      "output": 8,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q32185753",
+      "arrival": 430.502924,
+      "prompt": 10,
+      "output": 8,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q62564360",
+      "arrival": 437.216059,
+      "prompt": 16,
+      "output": 6,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q39343687",
+      "arrival": 437.616024,
+      "prompt": 51,
+      "output": 8,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q58481961",
+      "arrival": 448.648731,
+      "prompt": 14,
+      "output": 6,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q40355825",
+      "arrival": 463.112185,
+      "prompt": 14,
+      "output": 12,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q89080351",
+      "arrival": 471.622505,
+      "prompt": 10,
+      "output": 5,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q75976837",
+      "arrival": 492.455218,
+      "prompt": 15,
+      "output": 4,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q79993368",
+      "arrival": 496.220315,
+      "prompt": 15,
+      "output": 5,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q97571885",
+      "arrival": 508.104439,
+      "prompt": 13,
+      "output": 12,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q24224153",
+      "arrival": 517.127574,
+      "prompt": 6,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q80181399",
+      "arrival": 525.800085,
+      "prompt": 16,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q65084939",
+      "arrival": 531.891921,
+      "prompt": 8,
+      "output": 11,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q58446490",
+      "arrival": 550.215722,
+      "prompt": 7,
+      "output": 9,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q10386597",
+      "arrival": 579.162128,
+      "prompt": 6,
+      "output": 7,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q66409677",
+      "arrival": 585.588538,
+      "prompt": 11,
+      "output": 8,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q61694029",
+      "arrival": 596.49951,
+      "prompt": 5,
+      "output": 6,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q32416545",
+      "arrival": 597.125388,
+      "prompt": 5,
+      "output": 5,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q75636584",
+      "arrival": 609.214974,
+      "prompt": 4,
+      "output": 12,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q82382371",
+      "arrival": 619.631498,
+      "prompt": 10,
+      "output": 9,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q87306499",
+      "arrival": 669.387953,
+      "prompt": 13,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q96141952",
+      "arrival": 686.643446,
+      "prompt": 5,
+      "output": 7,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q95867355",
+      "arrival": 689.992518,
+      "prompt": 13,
+      "output": 9,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q20784617",
+      "arrival": 694.866725,
+      "prompt": 15,
+      "output": 6,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q31485903",
+      "arrival": 705.912608,
+      "prompt": 12,
+      "output": 11,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q93924649",
+      "arrival": 706.140822,
+      "prompt": 8,
+      "output": 8,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q13037645",
+      "arrival": 712.334127,
+      "prompt": 11,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q62435361",
+      "arrival": 714.173936,
+      "prompt": 9,
+      "output": 11,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q40561177",
+      "arrival": 715.419322,
+      "prompt": 13,
+      "output": 7,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q35167067",
+      "arrival": 716.026959,
+      "prompt": 9,
+      "output": 8,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q95203919",
+      "arrival": 730.647186,
+      "prompt": 16,
+      "output": 8,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q23500673",
+      "arrival": 732.032226,
+      "prompt": 9,
+      "output": 11,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q44491122",
+      "arrival": 734.877295,
+      "prompt": 13,
+      "output": 7,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q23734902",
+      "arrival": 739.835839,
+      "prompt": 16,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q42113537",
+      "arrival": 760.348033,
+      "prompt": 7,
+      "output": 12,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q10833084",
+      "arrival": 761.188169,
+      "prompt": 4,
+      "output": 9,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q33948668",
+      "arrival": 767.151776,
+      "prompt": 10,
+      "output": 11,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q62474046",
+      "arrival": 775.124414,
+      "prompt": 14,
+      "output": 9,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q99167476",
+      "arrival": 796.613087,
+      "prompt": 4,
+      "output": 6,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q31076809",
+      "arrival": 813.721142,
+      "prompt": 11,
+      "output": 12,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q14077407",
+      "arrival": 833.671004,
+      "prompt": 16,
+      "output": 12,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q40889645",
+      "arrival": 836.934139,
+      "prompt": 7,
+      "output": 6,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q92389539",
+      "arrival": 842.300643,
+      "prompt": 13,
+      "output": 11,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q67956039",
+      "arrival": 846.744332,
+      "prompt": 10,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q30156435",
+      "arrival": 868.30262,
+      "prompt": 6,
+      "output": 12,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q86936003",
+      "arrival": 899.939681,
+      "prompt": 6,
+      "output": 6,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q73123741",
+      "arrival": 901.575711,
+      "prompt": 35,
+      "output": 12,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q13936726",
+      "arrival": 903.514201,
+      "prompt": 53,
+      "output": 6,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q66948172",
+      "arrival": 906.153295,
+      "prompt": 44,
+      "output": 6,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q18269641",
+      "arrival": 908.810362,
+      "prompt": 16,
+      "output": 8,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q81014683",
+      "arrival": 915.445522,
+      "prompt": 39,
+      "output": 4,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q99308748",
+      "arrival": 924.340148,
+      "prompt": 4,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q72376433",
+      "arrival": 927.388385,
+      "prompt": 36,
+      "output": 11,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q81362517",
+      "arrival": 927.429405,
+      "prompt": 12,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q30350818",
+      "arrival": 932.858529,
+      "prompt": 57,
+      "output": 8,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q43069235",
+      "arrival": 937.467043,
+      "prompt": 13,
+      "output": 8,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q91062810",
+      "arrival": 945.822016,
+      "prompt": 63,
+      "output": 9,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q63270867",
+      "arrival": 976.41895,
+      "prompt": 34,
+      "output": 5,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q23666920",
+      "arrival": 988.146716,
+      "prompt": 46,
+      "output": 8,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q19342367",
+      "arrival": 995.392918,
+      "prompt": 34,
+      "output": 9,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q42385353",
+      "arrival": 1005.00561,
+      "prompt": 58,
+      "output": 5,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q17020101",
+      "arrival": 1016.281904,
+      "prompt": 12,
+      "output": 4,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q20915296",
+      "arrival": 1016.836956,
+      "prompt": 36,
+      "output": 10,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q75303365",
+      "arrival": 1039.816217,
+      "prompt": 11,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q78491052",
+      "arrival": 1054.956108,
+      "prompt": 14,
+      "output": 9,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q14358756",
+      "arrival": 1075.711653,
+      "prompt": 35,
+      "output": 8,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q99766017",
+      "arrival": 1091.70025,
+      "prompt": 4,
+      "output": 9,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q16742613",
+      "arrival": 1096.682288,
+      "prompt": 41,
+      "output": 11,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q68884222",
+      "arrival": 1101.773539,
+      "prompt": 49,
+      "output": 5,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q15591000",
+      "arrival": 1102.866523,
+      "prompt": 51,
+      "output": 11,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q33788573",
+      "arrival": 1112.925657,
+      "prompt": 46,
+      "output": 6,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q60550555",
+      "arrival": 1113.568353,
+      "prompt": 15,
+      "output": 4,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q64319898",
+      "arrival": 1114.26558,
+      "prompt": 61,
+      "output": 9,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q78760079",
+      "arrival": 1116.60716,
+      "prompt": 50,
+      "output": 8,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q53344048",
+      "arrival": 1118.37815,
+      "prompt": 13,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q82888470",
+      "arrival": 1122.534118,
+      "prompt": 9,
+      "output": 11,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q44008958",
+      "arrival": 1123.074199,
+      "prompt": 44,
+      "output": 6,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q59544906",
+      "arrival": 1123.076532,
+      "prompt": 43,
+      "output": 12,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q34907922",
+      "arrival": 1124.716614,
+      "prompt": 42,
+      "output": 9,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q36307999",
+      "arrival": 1125.786503,
+      "prompt": 13,
+      "output": 9,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q38391675",
+      "arrival": 1130.305939,
+      "prompt": 37,
+      "output": 12,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q57754822",
+      "arrival": 1130.564256,
+      "prompt": 9,
+      "output": 9,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q61513756",
+      "arrival": 1151.305403,
+      "prompt": 5,
+      "output": 11,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q50654017",
+      "arrival": 1160.82637,
+      "prompt": 34,
+      "output": 12,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q71032352",
+      "arrival": 1162.434521,
+      "prompt": 13,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q19853986",
+      "arrival": 1165.34149,
+      "prompt": 42,
+      "output": 12,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q58629402",
+      "arrival": 1169.609239,
+      "prompt": 63,
+      "output": 5,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q70799773",
+      "arrival": 1174.137376,
+      "prompt": 42,
+      "output": 4,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q92316775",
+      "arrival": 1175.44806,
+      "prompt": 56,
+      "output": 6,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q60045238",
+      "arrival": 1194.348638,
+      "prompt": 41,
+      "output": 12,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q37356902",
+      "arrival": 1244.114922,
+      "prompt": 10,
+      "output": 7,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q83790582",
+      "arrival": 1250.388319,
+      "prompt": 45,
+      "output": 6,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q58797792",
+      "arrival": 1257.001601,
+      "prompt": 39,
+      "output": 12,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q80902395",
+      "arrival": 1257.899586,
+      "prompt": 59,
+      "output": 6,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q33262851",
+      "arrival": 1258.977528,
+      "prompt": 42,
+      "output": 4,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q62019828",
+      "arrival": 1263.172699,
+      "prompt": 14,
+      "output": 8,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q43500637",
+      "arrival": 1266.24824,
+      "prompt": 9,
+      "output": 8,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q71254176",
+      "arrival": 1283.900703,
+      "prompt": 56,
+      "output": 12,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q58905889",
+      "arrival": 1285.661378,
+      "prompt": 12,
+      "output": 8,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q25767657",
+      "arrival": 1285.895044,
+      "prompt": 57,
+      "output": 11,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q46467470",
+      "arrival": 1316.05145,
+      "prompt": 6,
+      "output": 6,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q66568159",
+      "arrival": 1323.564668,
+      "prompt": 46,
+      "output": 6,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q85140794",
+      "arrival": 1325.149966,
+      "prompt": 4,
+      "output": 7,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q77609401",
+      "arrival": 1332.984459,
+      "prompt": 15,
+      "output": 5,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q67884778",
+      "arrival": 1333.258608,
+      "prompt": 10,
+      "output": 5,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q19657557",
+      "arrival": 1340.76869,
+      "prompt": 11,
+      "output": 6,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q18016488",
+      "arrival": 1379.166291,
+      "prompt": 8,
+      "output": 6,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q16658254",
+      "arrival": 1399.067788,
+      "prompt": 52,
+      "output": 8,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q10553613",
+      "arrival": 1410.981539,
+      "prompt": 5,
+      "output": 7,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q76358146",
+      "arrival": 1414.007671,
+      "prompt": 9,
+      "output": 6,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q18885713",
+      "arrival": 1418.575778,
+      "prompt": 12,
+      "output": 12,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q21331567",
+      "arrival": 1420.403499,
+      "prompt": 33,
+      "output": 12,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q60604565",
+      "arrival": 1435.184873,
+      "prompt": 55,
+      "output": 7,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q47565251",
+      "arrival": 1442.790409,
+      "prompt": 38,
+      "output": 4,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q90006275",
+      "arrival": 1457.888819,
+      "prompt": 36,
+      "output": 8,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q15751153",
+      "arrival": 1461.888595,
+      "prompt": 48,
+      "output": 4,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q37808919",
+      "arrival": 1464.412281,
+      "prompt": 8,
+      "output": 12,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q47328171",
+      "arrival": 1481.09945,
+      "prompt": 6,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q69139150",
+      "arrival": 1523.047323,
+      "prompt": 62,
+      "output": 9,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q78455706",
+      "arrival": 1542.19533,
+      "prompt": 63,
+      "output": 12,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q25779356",
+      "arrival": 1558.598353,
+      "prompt": 49,
+      "output": 6,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q42583963",
+      "arrival": 1575.654149,
+      "prompt": 62,
+      "output": 8,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q89549199",
+      "arrival": 1589.120003,
+      "prompt": 58,
+      "output": 12,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q69385826",
+      "arrival": 1591.691395,
+      "prompt": 56,
+      "output": 6,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q25814981",
+      "arrival": 1598.982014,
+      "prompt": 11,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q12279167",
+      "arrival": 1603.37579,
+      "prompt": 46,
+      "output": 8,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q70371906",
+      "arrival": 1603.669873,
+      "prompt": 5,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q86949891",
+      "arrival": 1603.953221,
+      "prompt": 11,
+      "output": 12,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q78328956",
+      "arrival": 1607.230189,
+      "prompt": 42,
+      "output": 12,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q54352650",
+      "arrival": 1610.230089,
+      "prompt": 4,
+      "output": 5,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q53120097",
+      "arrival": 1622.023604,
+      "prompt": 10,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q69123847",
+      "arrival": 1653.377014,
+      "prompt": 6,
+      "output": 12,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q18283178",
+      "arrival": 1659.305105,
+      "prompt": 36,
+      "output": 12,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q54088301",
+      "arrival": 1686.954676,
+      "prompt": 33,
+      "output": 4,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q68934606",
+      "arrival": 1731.214928,
+      "prompt": 54,
+      "output": 5,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q86575384",
+      "arrival": 1762.225996,
+      "prompt": 56,
+      "output": 7,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q54943918",
+      "arrival": 1766.761566,
+      "prompt": 9,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q75973013",
+      "arrival": 1769.252109,
+      "prompt": 9,
+      "output": 9,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q43995082",
+      "arrival": 1771.824877,
+      "prompt": 12,
+      "output": 10,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    },
+    {
+      "id": "q49091452",
+      "arrival": 1774.015224,
+      "prompt": 44,
+      "output": 12,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q46885382",
+      "arrival": 1776.301477,
+      "prompt": 47,
+      "output": 5,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q25159106",
+      "arrival": 1786.084904,
+      "prompt": 60,
+      "output": 4,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q13264318",
+      "arrival": 1809.141636,
+      "prompt": 60,
+      "output": 10,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q15807365",
+      "arrival": 1827.494709,
+      "prompt": 61,
+      "output": 9,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q77970712",
+      "arrival": 1834.023852,
+      "prompt": 50,
+      "output": 9,
+      "ttft_slo": 80,
+      "itl_slo": 4
+    },
+    {
+      "id": "q69431560",
+      "arrival": 1844.607524,
+      "prompt": 13,
+      "output": 8,
+      "ttft_slo": 30,
+      "itl_slo": 4
+    }
+  ],
+  "traffic": {
+    "workload": "changing_mix",
+    "seed": 7,
+    "count": 200,
+    "load": 1.0,
+    "classes": {
+      "q69506597": "chat",
+      "q92447734": "chat",
+      "q38014119": "chat",
+      "q54062714": "chat",
+      "q84765125": "chat",
+      "q90667954": "chat",
+      "q88850685": "chat",
+      "q20758755": "chat",
+      "q71457588": "chat",
+      "q80793202": "chat",
+      "q21711997": "chat",
+      "q19470658": "chat",
+      "q83773548": "chat",
+      "q52484563": "document",
+      "q17720757": "chat",
+      "q99888495": "chat",
+      "q29251939": "chat",
+      "q38223564": "chat",
+      "q29338688": "chat",
+      "q47417317": "chat",
+      "q94443910": "chat",
+      "q63699109": "chat",
+      "q51351568": "chat",
+      "q99830511": "chat",
+      "q14868319": "chat",
+      "q22244504": "chat",
+      "q61356668": "chat",
+      "q55050896": "chat",
+      "q99234944": "chat",
+      "q70281335": "chat",
+      "q83739858": "chat",
+      "q63401102": "chat",
+      "q62840143": "chat",
+      "q92968614": "chat",
+      "q92438281": "chat",
+      "q96196459": "chat",
+      "q39883529": "chat",
+      "q50095336": "chat",
+      "q55229632": "chat",
+      "q89138698": "chat",
+      "q64741961": "chat",
+      "q79930527": "chat",
+      "q88875448": "chat",
+      "q75692923": "chat",
+      "q13450283": "chat",
+      "q35067314": "chat",
+      "q18184498": "chat",
+      "q33156870": "chat",
+      "q62931144": "chat",
+      "q52101385": "chat",
+      "q96888675": "chat",
+      "q54665922": "document",
+      "q89029173": "chat",
+      "q97309664": "chat",
+      "q95932778": "document",
+      "q32185753": "chat",
+      "q62564360": "chat",
+      "q39343687": "document",
+      "q58481961": "chat",
+      "q40355825": "chat",
+      "q89080351": "chat",
+      "q75976837": "chat",
+      "q79993368": "chat",
+      "q97571885": "chat",
+      "q24224153": "chat",
+      "q80181399": "chat",
+      "q65084939": "chat",
+      "q58446490": "chat",
+      "q10386597": "chat",
+      "q66409677": "chat",
+      "q61694029": "chat",
+      "q32416545": "chat",
+      "q75636584": "chat",
+      "q82382371": "chat",
+      "q87306499": "chat",
+      "q96141952": "chat",
+      "q95867355": "chat",
+      "q20784617": "chat",
+      "q31485903": "chat",
+      "q93924649": "chat",
+      "q13037645": "chat",
+      "q62435361": "chat",
+      "q40561177": "chat",
+      "q35167067": "chat",
+      "q95203919": "chat",
+      "q23500673": "chat",
+      "q44491122": "chat",
+      "q23734902": "chat",
+      "q42113537": "chat",
+      "q10833084": "chat",
+      "q33948668": "chat",
+      "q62474046": "chat",
+      "q99167476": "chat",
+      "q31076809": "chat",
+      "q14077407": "chat",
+      "q40889645": "chat",
+      "q92389539": "chat",
+      "q67956039": "chat",
+      "q30156435": "chat",
+      "q86936003": "chat",
+      "q73123741": "document",
+      "q13936726": "document",
+      "q66948172": "document",
+      "q18269641": "chat",
+      "q81014683": "document",
+      "q99308748": "chat",
+      "q72376433": "document",
+      "q81362517": "chat",
+      "q30350818": "document",
+      "q43069235": "chat",
+      "q91062810": "document",
+      "q63270867": "document",
+      "q23666920": "document",
+      "q19342367": "document",
+      "q42385353": "document",
+      "q17020101": "chat",
+      "q20915296": "document",
+      "q75303365": "chat",
+      "q78491052": "chat",
+      "q14358756": "document",
+      "q99766017": "chat",
+      "q16742613": "document",
+      "q68884222": "document",
+      "q15591000": "document",
+      "q33788573": "document",
+      "q60550555": "chat",
+      "q64319898": "document",
+      "q78760079": "document",
+      "q53344048": "chat",
+      "q82888470": "chat",
+      "q44008958": "document",
+      "q59544906": "document",
+      "q34907922": "document",
+      "q36307999": "chat",
+      "q38391675": "document",
+      "q57754822": "chat",
+      "q61513756": "chat",
+      "q50654017": "document",
+      "q71032352": "chat",
+      "q19853986": "document",
+      "q58629402": "document",
+      "q70799773": "document",
+      "q92316775": "document",
+      "q60045238": "document",
+      "q37356902": "chat",
+      "q83790582": "document",
+      "q58797792": "document",
+      "q80902395": "document",
+      "q33262851": "document",
+      "q62019828": "chat",
+      "q43500637": "chat",
+      "q71254176": "document",
+      "q58905889": "chat",
+      "q25767657": "document",
+      "q46467470": "chat",
+      "q66568159": "document",
+      "q85140794": "chat",
+      "q77609401": "chat",
+      "q67884778": "chat",
+      "q19657557": "chat",
+      "q18016488": "chat",
+      "q16658254": "document",
+      "q10553613": "chat",
+      "q76358146": "chat",
+      "q18885713": "chat",
+      "q21331567": "document",
+      "q60604565": "document",
+      "q47565251": "document",
+      "q90006275": "document",
+      "q15751153": "document",
+      "q37808919": "chat",
+      "q47328171": "chat",
+      "q69139150": "document",
+      "q78455706": "document",
+      "q25779356": "document",
+      "q42583963": "document",
+      "q89549199": "document",
+      "q69385826": "document",
+      "q25814981": "chat",
+      "q12279167": "document",
+      "q70371906": "chat",
+      "q86949891": "chat",
+      "q78328956": "document",
+      "q54352650": "chat",
+      "q53120097": "chat",
+      "q69123847": "chat",
+      "q18283178": "document",
+      "q54088301": "document",
+      "q68934606": "document",
+      "q86575384": "document",
+      "q54943918": "chat",
+      "q75973013": "chat",
+      "q43995082": "chat",
+      "q49091452": "document",
+      "q46885382": "document",
+      "q25159106": "document",
+      "q13264318": "document",
+      "q15807365": "document",
+      "q77970712": "document",
+      "q69431560": "chat"
+    },
+    "burst_start": null,
+    "burst_end": null,
+    "change_time": 901.575711,
+    "output_bound": 48,
+    "description": "Synthetic teaching traffic; not production or GPU measurements."
+  },
+  "reference_goodput": 0.025898463260148746,
+  "reference_policy": "prefill_first",
+  "reference_cap": 2
+}

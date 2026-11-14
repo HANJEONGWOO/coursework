@@ -1,0 +1,66 @@
+{
+  "schema": "serving-lab-input-v1",
+  "case_id": "sustained_arrivals",
+  "config": {
+    "budget": 8,
+    "prefill_cap": 8,
+    "block_size": 4,
+    "capacity_blocks": 64,
+    "max_active": 6,
+    "prefill_rate": 4.0,
+    "decode_base": 1.0,
+    "decode_per_request": 0.05,
+    "max_iterations": 1000,
+    "output_bound": 0
+  },
+  "requests": [
+    {
+      "id": "A",
+      "arrival": 0,
+      "prompt": 4,
+      "output": 12,
+      "ttft_slo": 3,
+      "itl_slo": 3
+    },
+    {
+      "id": "B",
+      "arrival": 0,
+      "prompt": 4,
+      "output": 12,
+      "ttft_slo": 3,
+      "itl_slo": 3
+    },
+    {
+      "id": "D0",
+      "arrival": 2,
+      "prompt": 24,
+      "output": 4,
+      "ttft_slo": 12,
+      "itl_slo": 4
+    },
+    {
+      "id": "D1",
+      "arrival": 4,
+      "prompt": 24,
+      "output": 4,
+      "ttft_slo": 12,
+      "itl_slo": 4
+    },
+    {
+      "id": "D2",
+      "arrival": 6,
+      "prompt": 24,
+      "output": 4,
+      "ttft_slo": 12,
+      "itl_slo": 4
+    },
+    {
+      "id": "D3",
+      "arrival": 8,
+      "prompt": 24,
+      "output": 4,
+      "ttft_slo": 12,
+      "itl_slo": 4
+    }
+  ]
+}

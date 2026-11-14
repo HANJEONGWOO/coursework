@@ -1,0 +1,42 @@
+{
+  "schema": "serving-lab-input-v1",
+  "case_id": "tutorial",
+  "config": {
+    "budget": 8,
+    "prefill_cap": 8,
+    "block_size": 4,
+    "capacity_blocks": 8,
+    "max_active": 3,
+    "prefill_rate": 4.0,
+    "decode_base": 1.0,
+    "decode_per_request": 0.05,
+    "max_iterations": 1000,
+    "output_bound": 0
+  },
+  "requests": [
+    {
+      "id": "A",
+      "arrival": 0,
+      "prompt": 4,
+      "output": 4,
+      "ttft_slo": 3,
+      "itl_slo": 3
+    },
+    {
+      "id": "B",
+      "arrival": 0,
+      "prompt": 4,
+      "output": 4,
+      "ttft_slo": 3,
+      "itl_slo": 3
+    },
+    {
+      "id": "C",
+      "arrival": 2,
+      "prompt": 12,
+      "output": 3,
+      "ttft_slo": 6,
+      "itl_slo": 3
+    }
+  ]
+}

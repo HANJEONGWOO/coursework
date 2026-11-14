@@ -1,0 +1,5 @@
+request_id,arrival_ms,prompt_tokens,max_output_tokens,category
+q0000,0.000000,256,128,chat
+q0001,0.000000,2048,256,rag
+q0006,46571.982696,1024,128,chat
+q0007,46571.982696,32768,256,long

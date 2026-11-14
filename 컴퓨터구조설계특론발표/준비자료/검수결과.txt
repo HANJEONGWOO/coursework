@@ -1,0 +1,8 @@
+PASS: presentation has 19 slides in original order.
+PASS: title page has presenter/course/compact credit; affiliations removed.
+PASS: title banner and slides 2–19 render pixel-identically to original.
+PASS: notes PDF has one guide plus 19 pages, each containing EN then KO and a presenter note.
+PASS: Word file includes all 19 English/Korean script pairs and 19 slide previews.
+INFO: English word count 1019; planned speaking time 10:00.
+INFO: source slides SHA-256 e763e2ed311bc3f03905af5feda98729939ed8f65556266accc6c237c3aff8bb
+INFO: PDF content validated visually and with text extraction; DOCX content validated structurally (Word rendering not available).

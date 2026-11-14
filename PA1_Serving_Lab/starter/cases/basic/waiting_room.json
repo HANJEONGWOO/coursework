@@ -1,0 +1,42 @@
+{
+  "schema": "serving-lab-input-v1",
+  "case_id": "waiting_room",
+  "config": {
+    "budget": 8,
+    "prefill_cap": 8,
+    "block_size": 4,
+    "capacity_blocks": 4,
+    "max_active": 3,
+    "prefill_rate": 4.0,
+    "decode_base": 1.0,
+    "decode_per_request": 0.05,
+    "max_iterations": 1000,
+    "output_bound": 0
+  },
+  "requests": [
+    {
+      "id": "A",
+      "arrival": 0,
+      "prompt": 5,
+      "output": 2,
+      "ttft_slo": 100.0,
+      "itl_slo": 100.0
+    },
+    {
+      "id": "B",
+      "arrival": 0,
+      "prompt": 5,
+      "output": 2,
+      "ttft_slo": 100.0,
+      "itl_slo": 100.0
+    },
+    {
+      "id": "C",
+      "arrival": 1,
+      "prompt": 4,
+      "output": 2,
+      "ttft_slo": 100.0,
+      "itl_slo": 100.0
+    }
+  ]
+}

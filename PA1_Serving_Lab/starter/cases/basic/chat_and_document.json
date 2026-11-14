@@ -1,0 +1,42 @@
+{
+  "schema": "serving-lab-input-v1",
+  "case_id": "chat_and_document",
+  "config": {
+    "budget": 8,
+    "prefill_cap": 8,
+    "block_size": 4,
+    "capacity_blocks": 64,
+    "max_active": 6,
+    "prefill_rate": 4.0,
+    "decode_base": 1.0,
+    "decode_per_request": 0.05,
+    "max_iterations": 1000,
+    "output_bound": 0
+  },
+  "requests": [
+    {
+      "id": "A",
+      "arrival": 0,
+      "prompt": 4,
+      "output": 8,
+      "ttft_slo": 3,
+      "itl_slo": 3
+    },
+    {
+      "id": "B",
+      "arrival": 0,
+      "prompt": 4,
+      "output": 8,
+      "ttft_slo": 3,
+      "itl_slo": 3
+    },
+    {
+      "id": "C",
+      "arrival": 2,
+      "prompt": 24,
+      "output": 4,
+      "ttft_slo": 8,
+      "itl_slo": 3
+    }
+  ]
+}

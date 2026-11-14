@@ -1,0 +1,1008 @@
+{
+  "schema": "pa2-fixed-cluster-v6-async-dispatch",
+  "id": "fixed_learning_70b_shift_standard_s101",
+  "family": "shift",
+  "model_size": "70b",
+  "network": "standard",
+  "seed": 101,
+  "split": "public",
+  "tier": "learning-v3",
+  "model": {
+    "name": "teaching-70b",
+    "layers": 80,
+    "hidden_size": 8192,
+    "kv_heads": 8,
+    "head_dim": 128,
+    "layer_weight_bytes": 1720000000,
+    "embedding_weight_bytes": 1200000000,
+    "output_weight_bytes": 1200000000,
+    "dtype_bytes": 2
+  },
+  "hardware": {
+    "gpu_count": 32,
+    "gpus_per_node": 8,
+    "memory_bytes": 80000000000,
+    "compute_tflops": 150.0,
+    "hbm_bandwidth_gbps": 1500.0,
+    "intra_bandwidth_gbps": 200.0,
+    "inter_bandwidth_gbps": 25.0,
+    "intra_latency_ns": 500,
+    "inter_latency_ns": 5000
+  },
+  "slo": {
+    "chat": {
+      "ttft_ns": 2000000000,
+      "p95_itl_ns": 120000000
+    },
+    "rag": {
+      "ttft_ns": 8000000000,
+      "p95_itl_ns": 250000000
+    },
+    "long": {
+      "ttft_ns": 30000000000,
+      "p95_itl_ns": 800000000
+    }
+  },
+  "allowed_batches": [
+    1,
+    2,
+    4,
+    8,
+    16
+  ],
+  "forecast": {
+    "expected_request_count": 72.0,
+    "request_count_range": [
+      60,
+      84
+    ],
+    "class_probabilities": {
+      "chat": 0.5333333333333333,
+      "rag": 0.25,
+      "long": 0.21666666666666667
+    },
+    "epochs": [
+      {
+        "expected_requests": 24.0,
+        "expected_gap_ns": 450000000,
+        "class_probabilities": {
+          "chat": 0.8,
+          "rag": 0.15,
+          "long": 0.05
+        }
+      },
+      {
+        "expected_requests": 24.0,
+        "expected_gap_ns": 87500000,
+        "class_probabilities": {
+          "chat": 0.2,
+          "rag": 0.35,
+          "long": 0.45
+        }
+      },
+      {
+        "expected_requests": 24.0,
+        "expected_gap_ns": 200000000,
+        "class_probabilities": {
+          "chat": 0.6,
+          "rag": 0.25,
+          "long": 0.15
+        }
+      }
+    ],
+    "class_uncertainty": "Independently in each epoch: latent class probabilities ~ Dirichlet(40.0 * forecast probabilities); each request class is an independent categorical draw. No exact class counts are exposed.",
+    "rate_uncertainty": "Each epoch gap scale is forecast * Uniform(0.7,1.3). Cohort size is uniform in {1,2,4}; inter-cohort gap is cohort * latent gap * Uniform(0.8,1.2).",
+    "mean_arrival_gap_ns": 245833333,
+    "forecast_arrival_rate_requests_per_s": 4.067796615685148,
+    "mean_gap_description": "Nominal average across forecast epochs, not the realized finite-trace mean; scoring does not use this estimate.",
+    "length_mix": [
+      {
+        "prompt_tokens": 256,
+        "max_output_tokens": 64,
+        "fraction": 0.08888888888888889
+      },
+      {
+        "prompt_tokens": 256,
+        "max_output_tokens": 128,
+        "fraction": 0.08888888888888889
+      },
+      {
+        "prompt_tokens": 512,
+        "max_output_tokens": 64,
+        "fraction": 0.08888888888888889
+      },
+      {
+        "prompt_tokens": 512,
+        "max_output_tokens": 128,
+        "fraction": 0.08888888888888889
+      },
+      {
+        "prompt_tokens": 1024,
+        "max_output_tokens": 64,
+        "fraction": 0.08888888888888889
+      },
+      {
+        "prompt_tokens": 1024,
+        "max_output_tokens": 128,
+        "fraction": 0.08888888888888889
+      },
+      {
+        "prompt_tokens": 2048,
+        "max_output_tokens": 128,
+        "fraction": 0.041666666666666664
+      },
+      {
+        "prompt_tokens": 2048,
+        "max_output_tokens": 256,
+        "fraction": 0.041666666666666664
+      },
+      {
+        "prompt_tokens": 4096,
+        "max_output_tokens": 128,
+        "fraction": 0.041666666666666664
+      },
+      {
+        "prompt_tokens": 4096,
+        "max_output_tokens": 256,
+        "fraction": 0.041666666666666664
+      },
+      {
+        "prompt_tokens": 8192,
+        "max_output_tokens": 128,
+        "fraction": 0.041666666666666664
+      },
+      {
+        "prompt_tokens": 8192,
+        "max_output_tokens": 256,
+        "fraction": 0.041666666666666664
+      },
+      {
+        "prompt_tokens": 16384,
+        "max_output_tokens": 256,
+        "fraction": 0.05416666666666667
+      },
+      {
+        "prompt_tokens": 16384,
+        "max_output_tokens": 512,
+        "fraction": 0.05416666666666667
+      },
+      {
+        "prompt_tokens": 32768,
+        "max_output_tokens": 256,
+        "fraction": 0.05416666666666667
+      },
+      {
+        "prompt_tokens": 32768,
+        "max_output_tokens": 512,
+        "fraction": 0.05416666666666667
+      }
+    ],
+    "length_mix_description": "Prior probabilities, not realized counts. Uniform independent prompt and cap choices conditional on class.",
+    "actual_output_ranges": {
+      "chat": [
+        16,
+        48
+      ],
+      "rag": [
+        32,
+        96
+      ],
+      "long": [
+        64,
+        192
+      ]
+    },
+    "output_contract": "EOS is uniform integer within its class range, independent of cap and arrival; hidden until completion. MAX cap is visible. Sparse diagnostics use 4..8.",
+    "arrival_pattern": "Three consecutive epochs, 20..28 requests each. Epoch boundaries are not signalled online. Co-arrivals route sequentially with immediate memory reservation."
+  },
+  "requests": [
+    {
+      "id": "q0000",
+      "arrival_ns": 0,
+      "prompt_tokens": 1024,
+      "max_output_tokens": 128,
+      "output_tokens": 32,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0001",
+      "arrival_ns": 0,
+      "prompt_tokens": 1024,
+      "max_output_tokens": 128,
+      "output_tokens": 33,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0002",
+      "arrival_ns": 0,
+      "prompt_tokens": 512,
+      "max_output_tokens": 64,
+      "output_tokens": 24,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0003",
+      "arrival_ns": 0,
+      "prompt_tokens": 512,
+      "max_output_tokens": 128,
+      "output_tokens": 32,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0004",
+      "arrival_ns": 1813137642,
+      "prompt_tokens": 1024,
+      "max_output_tokens": 128,
+      "output_tokens": 26,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0005",
+      "arrival_ns": 1813137642,
+      "prompt_tokens": 16384,
+      "max_output_tokens": 256,
+      "output_tokens": 86,
+      "ttft_goal_ns": 30000000000,
+      "itl_goal_ns": 800000000,
+      "class": "long"
+    },
+    {
+      "id": "q0006",
+      "arrival_ns": 1813137642,
+      "prompt_tokens": 1024,
+      "max_output_tokens": 128,
+      "output_tokens": 35,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0007",
+      "arrival_ns": 1813137642,
+      "prompt_tokens": 512,
+      "max_output_tokens": 64,
+      "output_tokens": 43,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0008",
+      "arrival_ns": 3519465137,
+      "prompt_tokens": 1024,
+      "max_output_tokens": 64,
+      "output_tokens": 23,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0009",
+      "arrival_ns": 3519465137,
+      "prompt_tokens": 256,
+      "max_output_tokens": 64,
+      "output_tokens": 42,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0010",
+      "arrival_ns": 3519465137,
+      "prompt_tokens": 4096,
+      "max_output_tokens": 256,
+      "output_tokens": 76,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0011",
+      "arrival_ns": 3519465137,
+      "prompt_tokens": 512,
+      "max_output_tokens": 128,
+      "output_tokens": 17,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0012",
+      "arrival_ns": 5131886584,
+      "prompt_tokens": 32768,
+      "max_output_tokens": 512,
+      "output_tokens": 79,
+      "ttft_goal_ns": 30000000000,
+      "itl_goal_ns": 800000000,
+      "class": "long"
+    },
+    {
+      "id": "q0013",
+      "arrival_ns": 5131886584,
+      "prompt_tokens": 1024,
+      "max_output_tokens": 64,
+      "output_tokens": 26,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0014",
+      "arrival_ns": 5131886584,
+      "prompt_tokens": 512,
+      "max_output_tokens": 64,
+      "output_tokens": 21,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0015",
+      "arrival_ns": 5131886584,
+      "prompt_tokens": 512,
+      "max_output_tokens": 128,
+      "output_tokens": 18,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0016",
+      "arrival_ns": 6796195382,
+      "prompt_tokens": 8192,
+      "max_output_tokens": 256,
+      "output_tokens": 40,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0017",
+      "arrival_ns": 6796195382,
+      "prompt_tokens": 256,
+      "max_output_tokens": 64,
+      "output_tokens": 46,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0018",
+      "arrival_ns": 6796195382,
+      "prompt_tokens": 512,
+      "max_output_tokens": 128,
+      "output_tokens": 28,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0019",
+      "arrival_ns": 6796195382,
+      "prompt_tokens": 8192,
+      "max_output_tokens": 128,
+      "output_tokens": 45,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0020",
+      "arrival_ns": 8378806146,
+      "prompt_tokens": 512,
+      "max_output_tokens": 128,
+      "output_tokens": 28,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0021",
+      "arrival_ns": 8378806146,
+      "prompt_tokens": 2048,
+      "max_output_tokens": 256,
+      "output_tokens": 50,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0022",
+      "arrival_ns": 8749795057,
+      "prompt_tokens": 32768,
+      "max_output_tokens": 256,
+      "output_tokens": 139,
+      "ttft_goal_ns": 30000000000,
+      "itl_goal_ns": 800000000,
+      "class": "long"
+    },
+    {
+      "id": "q0023",
+      "arrival_ns": 8749795057,
+      "prompt_tokens": 16384,
+      "max_output_tokens": 512,
+      "output_tokens": 107,
+      "ttft_goal_ns": 30000000000,
+      "itl_goal_ns": 800000000,
+      "class": "long"
+    },
+    {
+      "id": "q0024",
+      "arrival_ns": 8749795057,
+      "prompt_tokens": 32768,
+      "max_output_tokens": 512,
+      "output_tokens": 77,
+      "ttft_goal_ns": 30000000000,
+      "itl_goal_ns": 800000000,
+      "class": "long"
+    },
+    {
+      "id": "q0025",
+      "arrival_ns": 8749795057,
+      "prompt_tokens": 4096,
+      "max_output_tokens": 128,
+      "output_tokens": 60,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0026",
+      "arrival_ns": 9102770758,
+      "prompt_tokens": 16384,
+      "max_output_tokens": 512,
+      "output_tokens": 168,
+      "ttft_goal_ns": 30000000000,
+      "itl_goal_ns": 800000000,
+      "class": "long"
+    },
+    {
+      "id": "q0027",
+      "arrival_ns": 9102770758,
+      "prompt_tokens": 2048,
+      "max_output_tokens": 256,
+      "output_tokens": 91,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0028",
+      "arrival_ns": 9102770758,
+      "prompt_tokens": 16384,
+      "max_output_tokens": 256,
+      "output_tokens": 117,
+      "ttft_goal_ns": 30000000000,
+      "itl_goal_ns": 800000000,
+      "class": "long"
+    },
+    {
+      "id": "q0029",
+      "arrival_ns": 9102770758,
+      "prompt_tokens": 8192,
+      "max_output_tokens": 256,
+      "output_tokens": 62,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0030",
+      "arrival_ns": 9478075285,
+      "prompt_tokens": 256,
+      "max_output_tokens": 64,
+      "output_tokens": 46,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0031",
+      "arrival_ns": 9478075285,
+      "prompt_tokens": 32768,
+      "max_output_tokens": 512,
+      "output_tokens": 136,
+      "ttft_goal_ns": 30000000000,
+      "itl_goal_ns": 800000000,
+      "class": "long"
+    },
+    {
+      "id": "q0032",
+      "arrival_ns": 9478075285,
+      "prompt_tokens": 256,
+      "max_output_tokens": 64,
+      "output_tokens": 20,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0033",
+      "arrival_ns": 9478075285,
+      "prompt_tokens": 4096,
+      "max_output_tokens": 128,
+      "output_tokens": 74,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0034",
+      "arrival_ns": 9772871146,
+      "prompt_tokens": 512,
+      "max_output_tokens": 128,
+      "output_tokens": 19,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0035",
+      "arrival_ns": 9772871146,
+      "prompt_tokens": 16384,
+      "max_output_tokens": 512,
+      "output_tokens": 76,
+      "ttft_goal_ns": 30000000000,
+      "itl_goal_ns": 800000000,
+      "class": "long"
+    },
+    {
+      "id": "q0036",
+      "arrival_ns": 9772871146,
+      "prompt_tokens": 4096,
+      "max_output_tokens": 128,
+      "output_tokens": 76,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0037",
+      "arrival_ns": 9772871146,
+      "prompt_tokens": 32768,
+      "max_output_tokens": 512,
+      "output_tokens": 107,
+      "ttft_goal_ns": 30000000000,
+      "itl_goal_ns": 800000000,
+      "class": "long"
+    },
+    {
+      "id": "q0038",
+      "arrival_ns": 10188416925,
+      "prompt_tokens": 2048,
+      "max_output_tokens": 256,
+      "output_tokens": 81,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0039",
+      "arrival_ns": 10188416925,
+      "prompt_tokens": 2048,
+      "max_output_tokens": 128,
+      "output_tokens": 65,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0040",
+      "arrival_ns": 10188416925,
+      "prompt_tokens": 32768,
+      "max_output_tokens": 256,
+      "output_tokens": 177,
+      "ttft_goal_ns": 30000000000,
+      "itl_goal_ns": 800000000,
+      "class": "long"
+    },
+    {
+      "id": "q0041",
+      "arrival_ns": 10188416925,
+      "prompt_tokens": 512,
+      "max_output_tokens": 64,
+      "output_tokens": 18,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0042",
+      "arrival_ns": 10582190355,
+      "prompt_tokens": 32768,
+      "max_output_tokens": 512,
+      "output_tokens": 73,
+      "ttft_goal_ns": 30000000000,
+      "itl_goal_ns": 800000000,
+      "class": "long"
+    },
+    {
+      "id": "q0043",
+      "arrival_ns": 10582190355,
+      "prompt_tokens": 16384,
+      "max_output_tokens": 256,
+      "output_tokens": 183,
+      "ttft_goal_ns": 30000000000,
+      "itl_goal_ns": 800000000,
+      "class": "long"
+    },
+    {
+      "id": "q0044",
+      "arrival_ns": 10582190355,
+      "prompt_tokens": 32768,
+      "max_output_tokens": 256,
+      "output_tokens": 144,
+      "ttft_goal_ns": 30000000000,
+      "itl_goal_ns": 800000000,
+      "class": "long"
+    },
+    {
+      "id": "q0045",
+      "arrival_ns": 10582190355,
+      "prompt_tokens": 16384,
+      "max_output_tokens": 512,
+      "output_tokens": 99,
+      "ttft_goal_ns": 30000000000,
+      "itl_goal_ns": 800000000,
+      "class": "long"
+    },
+    {
+      "id": "q0046",
+      "arrival_ns": 10898525602,
+      "prompt_tokens": 16384,
+      "max_output_tokens": 256,
+      "output_tokens": 86,
+      "ttft_goal_ns": 30000000000,
+      "itl_goal_ns": 800000000,
+      "class": "long"
+    },
+    {
+      "id": "q0047",
+      "arrival_ns": 10898525602,
+      "prompt_tokens": 2048,
+      "max_output_tokens": 256,
+      "output_tokens": 61,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0048",
+      "arrival_ns": 10898525602,
+      "prompt_tokens": 4096,
+      "max_output_tokens": 256,
+      "output_tokens": 33,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0049",
+      "arrival_ns": 10898525602,
+      "prompt_tokens": 2048,
+      "max_output_tokens": 256,
+      "output_tokens": 87,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0050",
+      "arrival_ns": 11470056625,
+      "prompt_tokens": 1024,
+      "max_output_tokens": 128,
+      "output_tokens": 32,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0051",
+      "arrival_ns": 11470056625,
+      "prompt_tokens": 1024,
+      "max_output_tokens": 128,
+      "output_tokens": 16,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0052",
+      "arrival_ns": 11470056625,
+      "prompt_tokens": 2048,
+      "max_output_tokens": 128,
+      "output_tokens": 42,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0053",
+      "arrival_ns": 11470056625,
+      "prompt_tokens": 4096,
+      "max_output_tokens": 128,
+      "output_tokens": 82,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0054",
+      "arrival_ns": 12075122719,
+      "prompt_tokens": 8192,
+      "max_output_tokens": 256,
+      "output_tokens": 67,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0055",
+      "arrival_ns": 12075122719,
+      "prompt_tokens": 256,
+      "max_output_tokens": 128,
+      "output_tokens": 48,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0056",
+      "arrival_ns": 12075122719,
+      "prompt_tokens": 256,
+      "max_output_tokens": 128,
+      "output_tokens": 20,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0057",
+      "arrival_ns": 12075122719,
+      "prompt_tokens": 32768,
+      "max_output_tokens": 256,
+      "output_tokens": 70,
+      "ttft_goal_ns": 30000000000,
+      "itl_goal_ns": 800000000,
+      "class": "long"
+    },
+    {
+      "id": "q0058",
+      "arrival_ns": 12687327802,
+      "prompt_tokens": 512,
+      "max_output_tokens": 128,
+      "output_tokens": 27,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0059",
+      "arrival_ns": 12687327802,
+      "prompt_tokens": 4096,
+      "max_output_tokens": 128,
+      "output_tokens": 40,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0060",
+      "arrival_ns": 12687327802,
+      "prompt_tokens": 4096,
+      "max_output_tokens": 128,
+      "output_tokens": 42,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0061",
+      "arrival_ns": 12687327802,
+      "prompt_tokens": 32768,
+      "max_output_tokens": 256,
+      "output_tokens": 189,
+      "ttft_goal_ns": 30000000000,
+      "itl_goal_ns": 800000000,
+      "class": "long"
+    },
+    {
+      "id": "q0062",
+      "arrival_ns": 13198453704,
+      "prompt_tokens": 2048,
+      "max_output_tokens": 128,
+      "output_tokens": 77,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0063",
+      "arrival_ns": 13198453704,
+      "prompt_tokens": 512,
+      "max_output_tokens": 128,
+      "output_tokens": 26,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0064",
+      "arrival_ns": 13198453704,
+      "prompt_tokens": 2048,
+      "max_output_tokens": 256,
+      "output_tokens": 59,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0065",
+      "arrival_ns": 13198453704,
+      "prompt_tokens": 2048,
+      "max_output_tokens": 128,
+      "output_tokens": 83,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0066",
+      "arrival_ns": 13807657501,
+      "prompt_tokens": 512,
+      "max_output_tokens": 128,
+      "output_tokens": 45,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0067",
+      "arrival_ns": 13807657501,
+      "prompt_tokens": 1024,
+      "max_output_tokens": 64,
+      "output_tokens": 33,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0068",
+      "arrival_ns": 13807657501,
+      "prompt_tokens": 1024,
+      "max_output_tokens": 64,
+      "output_tokens": 20,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0069",
+      "arrival_ns": 13807657501,
+      "prompt_tokens": 4096,
+      "max_output_tokens": 128,
+      "output_tokens": 85,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0070",
+      "arrival_ns": 14346532009,
+      "prompt_tokens": 512,
+      "max_output_tokens": 64,
+      "output_tokens": 36,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0071",
+      "arrival_ns": 14346532009,
+      "prompt_tokens": 256,
+      "max_output_tokens": 128,
+      "output_tokens": 48,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0072",
+      "arrival_ns": 14346532009,
+      "prompt_tokens": 256,
+      "max_output_tokens": 64,
+      "output_tokens": 42,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    },
+    {
+      "id": "q0073",
+      "arrival_ns": 14346532009,
+      "prompt_tokens": 8192,
+      "max_output_tokens": 128,
+      "output_tokens": 84,
+      "ttft_goal_ns": 8000000000,
+      "itl_goal_ns": 250000000,
+      "class": "rag"
+    },
+    {
+      "id": "q0074",
+      "arrival_ns": 14957086882,
+      "prompt_tokens": 256,
+      "max_output_tokens": 128,
+      "output_tokens": 43,
+      "ttft_goal_ns": 2000000000,
+      "itl_goal_ns": 120000000,
+      "class": "chat"
+    }
+  ],
+  "offline_workload_diagnostics": {
+    "epochs": [
+      {
+        "epoch": 0,
+        "first_request_index": 0,
+        "count": 22,
+        "arrival_start_ns": 0,
+        "arrival_end_ns": 8378806146,
+        "latent_class_probabilities": {
+          "chat": 0.7365257374163747,
+          "rag": 0.1773722949021956,
+          "long": 0.08610196768142969
+        },
+        "latent_gap_ns": 430900780.48896605,
+        "cohort_size": 4
+      },
+      {
+        "epoch": 1,
+        "first_request_index": 22,
+        "count": 28,
+        "arrival_start_ns": 8749795057,
+        "arrival_end_ns": 10898525602,
+        "latent_class_probabilities": {
+          "chat": 0.2130912827457335,
+          "rag": 0.4139519777204558,
+          "long": 0.3729567395338107
+        },
+        "latent_gap_ns": 86838592.47725013,
+        "cohort_size": 4
+      },
+      {
+        "epoch": 2,
+        "first_request_index": 50,
+        "count": 25,
+        "arrival_start_ns": 11470056625,
+        "arrival_end_ns": 14957086882,
+        "latent_class_probabilities": {
+          "chat": 0.6888840471941147,
+          "rag": 0.21324377966145583,
+          "long": 0.09787217314442953
+        },
+        "latent_gap_ns": 144278851.09081098,
+        "cohort_size": 4
+      }
+    ],
+    "visibility": "For offline inspection only. load_case_spec whitelists fields; these realized conditions never enter callbacks."
+  },
+  "assumptions": {
+    "source": "Synthetic teaching architectures and traffic; effective rates, not measured GPU benchmarks.",
+    "purpose": "Chat, context surge, then recovery",
+    "bandwidth_unit": "Decimal GB/s despite _gbps suffix.",
+    "compute_profile": "pa2-roofline-v4-microbatch-padding",
+    "admission": "Reserve prompt + MAX output cap; release at EOS. Not PagedAttention.",
+    "paged_attention": false,
+    "eviction_or_recompute": false,
+    "shared_fabric_contention": false,
+    "same_mechanisms": "Grader changes seed only. Forecast uncertainty and within-trace load changes use this identical law."
+  }
+}

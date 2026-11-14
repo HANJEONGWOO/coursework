@@ -1,0 +1,414 @@
+/* Offline dashboard styles. The HTML IDs connect controls to visualizer.js.
+ * Colors are shared by HTML panels and SVG graphs through CSS variables.
+ * No rule below changes simulation data or the selected replay time.
+ */
+
+/* 1. Theme: the same phase colors work in light and dark browser modes. */
+:root {
+  color-scheme: light dark;
+  --bg: light-dark(#f7f8fb, #10151e);
+  --panel: light-dark(#fff, #1b2330);
+  --ink: light-dark(#182333, #e5edf6);
+  --muted: light-dark(#526477, #b5c2d2);
+  --line: light-dark(#d4dce6, #405063);
+  --pre: light-dark(#dd8b20, #efb45e);
+  --dec: light-dark(#2876bd, #68b8fc);
+  --free: light-dark(#e4e9ef, #344252);
+  --bad: light-dark(#b52939, #ff9fa9);
+}
+/* 2. Page layout, typography, and ordinary form controls. */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font:
+    15px/1.5 system-ui,
+    sans-serif;
+}
+main {
+  max-width: 1240px;
+  margin: auto;
+  padding: 24px;
+}
+h1 {
+  font-size: 26px;
+  margin: 0;
+}
+h2 {
+  font-size: 19px;
+  margin: 0 0 8px;
+}
+h3 {
+  font-size: 16px;
+  margin: 14px 0 6px;
+}
+p {
+  margin: 8px 0;
+}
+.muted {
+  color: var(--muted);
+}
+header {
+  margin-bottom: 20px;
+}
+.controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: end;
+  margin: 14px 0;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+select,
+button,
+input {
+  font: inherit;
+  max-width: 100%;
+}
+select,
+button,
+input[type="file"] {
+  border: 1px solid var(--line);
+  padding: 8px 10px;
+  background: var(--panel);
+  color: var(--ink);
+  border-radius: 6px;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--dec);
+}
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--dec);
+}
+.toolbar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+/* 3. Side-by-side result panels collapse to one column on a narrow screen. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
+  gap: 16px;
+}
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 16px;
+  border-radius: 10px;
+  min-width: 0;
+}
+.legend {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+}
+.timeline {
+  width: 100%;
+  display: block;
+  min-height: 100px;
+}
+svg text {
+  font: 12px system-ui;
+  fill: var(--ink);
+}
+/* 4. Memory tiles show ownership counts, not physical block addresses. */
+.blocks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(32px, 1fr));
+  gap: 4px;
+  margin: 10px 0;
+}
+.block {
+  background: var(--free);
+  text-align: center;
+  padding: 4px;
+  min-height: 30px;
+  color: var(--ink);
+}
+.block.used {
+  background: color-mix(in srgb, var(--dec) 25%, var(--panel));
+}
+.plan {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.pill {
+  padding: 4px 8px;
+  background: var(--free);
+  border-radius: 4px;
+}
+.pill.pre {
+  background: color-mix(in srgb, var(--pre) 24%, var(--panel));
+}
+.pill.dec {
+  background: color-mix(in srgb, var(--dec) 24%, var(--panel));
+}
+.error {
+  color: var(--bad);
+}
+.events {
+  overflow-wrap: anywhere;
+  max-height: 240px;
+  overflow: auto;
+  margin-top: 8px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  padding: 6px;
+  font-size: 14px;
+}
+code {
+  overflow-wrap: anywhere;
+}
+#bookmark {
+  width: 100%;
+  padding: 8px;
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+.summary {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.summary span {
+  display: flex;
+  flex-direction: column;
+}
+.summary b {
+  font-size: 20px;
+  font-weight: 600;
+}
+details {
+  margin: 12px 0;
+}
+footer {
+  margin-top: 20px;
+  color: var(--muted);
+}
+@media (max-width: 500px) {
+  main {
+    padding: 12px;
+  }
+  .panel {
+    padding: 10px;
+  }
+  .controls > * {
+    max-width: 100%;
+  }
+  input[type="file"] {
+    width: 100%;
+  }
+}
+/* 5. Overview charts and the table of requests related to a graph selection. */
+.study-charts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+@media (max-width: 650px) {
+  .study-charts {
+    grid-template-columns: 1fr;
+  }
+}
+.study-chart {
+  width: 100%;
+  cursor: crosshair;
+}
+#study-overview {
+  margin: 18px 0;
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+.study-request {
+  margin: 4px;
+}
+@media (max-width: 650px) {
+  #class-table,
+  #request-summary table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+.block {
+  overflow-wrap: anywhere;
+}
+#chart-inspector {
+  border-top: 2px solid var(--dec);
+  margin: 14px 0;
+  padding: 12px 0;
+}
+#chart-inspector:focus-visible,
+.study-chart:focus-visible {
+  outline: 3px solid var(--dec);
+}
+.related-scroll {
+  max-height: 290px;
+  overflow: auto;
+}
+.related-scroll th {
+  position: sticky;
+  top: 0;
+  background: var(--panel);
+}
+.related-selected {
+  background: var(--free);
+}
+.related-scroll td {
+  overflow-wrap: anywhere;
+  min-width: 100px;
+}
+.request-focus {
+  border-left: 4px solid var(--dec);
+  padding-left: 10px;
+  margin: 8px 0 14px;
+}
+.selected-action,
+.selected-event {
+  outline: 2px solid var(--dec);
+  outline-offset: -2px;
+}
+[data-trace-request] {
+  cursor: pointer;
+}
+.chart-return {
+  margin-bottom: 12px;
+}
+
+/* 6. Request directory and timeline controls share the selected request ID. */
+#request-explorer,
+#timeline-tools {
+  margin: 18px 0;
+  padding: 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  scroll-margin-top: 60px;
+}
+#timeline-tools h2 span {
+  font-size: 14px;
+  font-weight: 400;
+}
+.request-table-scroll {
+  max-height: 330px;
+  overflow: auto;
+  position: relative;
+}
+.request-table-scroll th {
+  position: sticky;
+  top: 0;
+  background: var(--panel);
+  z-index: 1;
+}
+.request-table-scroll table {
+  min-width: 660px;
+}
+.request-table-scroll button {
+  padding: 3px 6px;
+}
+/* All request lanes exist in the DOM; the viewport scrolls through them. */
+.lane-scroll {
+  max-height: 480px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+}
+.lane-name {
+  cursor: pointer;
+  font-size: 12px;
+}
+.timeline-ruler {
+  display: block;
+  width: 100%;
+  background: var(--panel);
+}
+/* Vertical touch scrolling stays native. JavaScript handles zoom and pan. */
+svg.timeline[data-start] {
+  touch-action: pan-y;
+  cursor: grab;
+}
+.timeline-ruler {
+  cursor: crosshair;
+}
+.timeline [role="button"]:focus-visible {
+  outline: 2px solid var(--bad);
+}
+.jump-nav {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: var(--bg);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+.jump-nav a {
+  color: var(--dec);
+  padding: 4px 8px;
+}
+#study-overview,
+#panels,
+#request-summary {
+  scroll-margin-top: 60px;
+}
+.block.used {
+  cursor: pointer;
+}
+.block.selected-block {
+  outline: 2px solid var(--dec);
+}
+.events button {
+  text-align: left;
+  display: block;
+  width: 100%;
+  margin-bottom: 4px;
+}
+.toolbar input[type="number"] {
+  width: 125px;
+  padding: 5px;
+}
+.toolbar {
+  margin-bottom: 8px;
+}
+.timeline-ruler text {
+  font-size: 11px;
+}
+.lane-count {
+  font-size: 13px;
+  color: var(--muted);
+}

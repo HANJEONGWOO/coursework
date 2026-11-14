@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <!--
+  Offline replay dashboard: open this file directly in a browser.
+  Python generates JSON. This page only reads that JSON after file selection.
+
+  Reading route:
+    visualizer.html: fixed controls and empty containers, identified by id.
+    visualizer.css: appearance and responsive layouts.
+    visualizer.js: file loading, shared state, render(), playback, and events.
+    study_view.js: overview charts and chart-to-request relationships.
+    explorer.js: request search, timeline lanes, selection, zoom, and pan.
+    arena_view.js: the selected case's score panel.
+
+  Scripts share a classic-script scope. They declare functions first and call
+  them only after loading. Keep their script tags below the HTML controls.
+  No server, build step, library download, or browser upload is needed.
+-->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>PA1 · Serving Lab</title>
+    <link rel="stylesheet" href="visualizer.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="muted">PA1 · LLM Serving Systems</div>
+        <h1>Simulation dashboard</h1>
+        <p>
+          Open one JSON recording produced by Python. Each simulation result uses one
+          request list and one configuration. This page displays the recording. After
+          editing Python, run it again and reopen its JSON file.
+        </p>
+      </header>
+      <!-- Fixed controls: visualizer.js attaches listeners using these IDs. -->
+      <div class="controls" id="file-controls">
+        <label>
+          1. Open a recording (.json)
+          <input id="files" type="file" accept=".json" />
+        </label>
+        <span>
+          First recording: results/demo/tutorial.json
+          <br />
+          Generate it with:
+          <code>python starter/run_lab.py --mission demo --case tutorial</code>
+        </span>
+      </div>
+      <div class="controls" id="result-controls">
+        <label>
+          2. Test case
+          <input id="case-name" readonly />
+        </label>
+        <label>
+          3. Result on left
+          <select id="run"></select>
+        </label>
+        <label>
+          Comparison on right
+          <select id="compare-run"></select>
+        </label>
+        <label>
+          4. Request to inspect
+          <select id="request"></select>
+        </label>
+      </div>
+      <nav class="jump-nav" aria-label="Dashboard sections">
+        <a href="#study-overview">Overview graphs</a>
+        <a href="#request-explorer">All requests</a>
+        <a href="#timeline-tools">Timeline / zoom</a>
+        <a href="#panels">Execution details</a>
+        <a href="#request-summary">Final metrics</a>
+      </nav>
+      <div id="load-status" role="status" aria-live="polite"></div>
+      <div class="toolbar">
+        <button id="prev">Previous boundary</button>
+        <button id="play">Play</button>
+        <button id="next">Next boundary</button>
+        <label>
+          <span>
+            <input type="checkbox" id="compare" checked />
+            Show comparison at the same elapsed time
+          </span>
+        </label>
+      </div>
+      <div class="toolbar" id="time-controls">
+        <label>
+          5. Go to time
+          <input id="seek" type="number" min="0" step="0.001" value="0" />
+        </label>
+        <span id="clock"></span>
+      </div>
+      <input
+        id="time"
+        type="range"
+        min="0"
+        max="1"
+        value="0"
+        step="0.001"
+        aria-label="Elapsed time"
+      />
+      <div class="legend">
+        <span>
+          <i class="swatch" style="background: var(--pre)"></i>
+          Prefill
+        </span>
+        <span>
+          <i class="swatch" style="background: var(--dec)"></i>
+          Decode
+        </span>
+        <span>● Output token</span>
+        <span>Thin line: request lifetime; bars: recorded work</span>
+      </div>
+      <p class="muted">
+        Horizontal position and width encode elapsed time, not iteration count. Each row
+        is a request; all recorded work is visible, including after the cursor. The
+        cursor selects the iteration details below.
+      </p>
+      <label>
+        Debug location (select and copy)
+        <input id="bookmark" readonly />
+      </label>
+      <!-- Empty containers are filled by render() and the panel scripts. -->
+      <section id="arena-board" hidden></section>
+      <section id="request-summary" aria-live="polite"></section>
+      <section id="study-overview" hidden></section>
+      <section id="request-explorer" hidden></section>
+      <section id="timeline-tools" hidden></section>
+      <div id="panels" class="grid" style="margin-top: 16px"></div>
+      <details>
+        <summary>Model and replay conventions</summary>
+        <p>
+          For simulator runs, prefill costs N / prefill_rate; an iteration with decode
+          adds decode_base + decode_per_request × decoding requests. Costs are added,
+          with no overlap. A token budget is not a time budget. Prefill completion emits
+          output 1. Later decode consumes the previous output. Admission reserves the
+          entire prompt; useful KV content grows as input is processed. Final KV length
+          before release is prompt + output − 1. No eviction or failed-request recovery
+          is modeled. Queue recovery in the traffic study is a separate metric.
+        </p>
+        <p>
+          The memory grid shows the current iteration's reserved blocks after
+          planning/growth, before completion releases. Useful positions describe
+          processed input. Events show exact admission, growth, and release changes. SLO
+          (Service Level Objective) summaries are final-run results, not predictions at
+          the cursor. A single gap crossing a threshold is distinct from failing the
+          request's P95 inter-token latency (ITL) criterion.
+        </p>
+        <p>
+          All assignment recordings use synthetic time units, not GPU measurements.
+          Invalid or incomplete runs have no performance summary. The viewer does not
+          execute or repair student policies.
+        </p>
+      </details>
+      <footer>
+        Local files only · no uploads, network requests, or external dependencies ·
+        sources: supplied engine.py, baseline.py, fixtures.py.
+      </footer>
+    </main>
+    <script src="study_view.js"></script>
+    <script src="arena_view.js"></script>
+    <script src="explorer.js"></script>
+    <script src="visualizer.js"></script>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+{
+  "schema": "pa2-tp-public-v1",
+  "default_case": "medium",
+  "cases": [
+    {
+      "id": "small",
+      "model": "8B",
+      "description": "Sustained requests",
+      "file": "cases/small.json",
+      "source_case_id": "fixed_learning_8b_sustained_standard_s101",
+      "sha256": "2cd1cdcb66c37a70d9521cfe33dded069865a573be9b579e15682b44bd49c43f",
+      "request_count": 67,
+      "network": "standard",
+      "seed": 101
+    },
+    {
+      "id": "small-shift",
+      "model": "8B",
+      "description": "Chat, context surge, then recovery",
+      "file": "cases/small-shift.json",
+      "source_case_id": "fixed_learning_8b_shift_standard_s101",
+      "sha256": "d840a112c10186e263acd3d2f1b5a1d5c9d706f0fdc992ce96f7ae990ce72ba8",
+      "request_count": 75,
+      "network": "standard",
+      "seed": 101
+    },
+    {
+      "id": "medium",
+      "model": "70B",
+      "description": "Sustained requests",
+      "file": "cases/medium.json",
+      "source_case_id": "fixed_learning_70b_sustained_standard_s101",
+      "sha256": "b8237b28357e8830a0922fef5548272cc14cb53a4b32888ec60c386e0bcd872b",
+      "request_count": 67,
+      "network": "standard",
+      "seed": 101
+    },
+    {
+      "id": "medium-shift",
+      "model": "70B",
+      "description": "Chat, context surge, then recovery",
+      "file": "cases/medium-shift.json",
+      "source_case_id": "fixed_learning_70b_shift_standard_s101",
+      "sha256": "7eb513f7e0b1759df96ff6b4109c2dc81abd28011ae43fd89c7739a03b9f2117",
+      "request_count": 75,
+      "network": "standard",
+      "seed": 101
+    },
+    {
+      "id": "large",
+      "model": "400B",
+      "description": "Sustained requests",
+      "file": "cases/large.json",
+      "source_case_id": "fixed_learning_400b_sustained_standard_s101",
+      "sha256": "07c0e088c36e22fecd5a77fbef4c8b37a94b5daaad1e1543c650c85a55a313f0",
+      "request_count": 38,
+      "network": "standard",
+      "seed": 101
+    },
+    {
+      "id": "large-shift",
+      "model": "400B",
+      "description": "Chat, context surge, then recovery",
+      "file": "cases/large-shift.json",
+      "source_case_id": "fixed_learning_400b_shift_standard_s101",
+      "sha256": "4a43f762358d1219c7e29c37bf0ea1a83f8c191bd8f31ced04c9e4dcab02ad4a",
+      "request_count": 43,
+      "network": "standard",
+      "seed": 101
+    }
+  ],
+  "note": "The six regular inputs are unchanged. Practice inputs select requests from the corresponding sustained input; --all runs only the six regular inputs.",
+  "practice_cases": [
+    {
+      "id": "small-practice",
+      "model": "8B",
+      "description": "Practice: first 8 requests of small",
+      "file": "cases/small-practice.json",
+      "source_case_id": "fixed_learning_8b_sustained_standard_s101_practice_first8",
+      "sha256": "f21dfa183a1b8c8de208bad7d1011a4dfbdabb292d14f711007b8cec0a9d9009",
+      "request_count": 8,
+      "source_public_case": "small"
+    },
+    {
+      "id": "medium-practice",
+      "model": "70B",
+      "description": "Practice: first 8 requests of medium",
+      "file": "cases/medium-practice.json",
+      "source_case_id": "fixed_learning_70b_sustained_standard_s101_practice_first8",
+      "sha256": "98ad5fa0f5774f532baf98be6b596db123da5655b5c826592b5235233a237e43",
+      "request_count": 8,
+      "source_public_case": "medium"
+    },
+    {
+      "id": "large-practice",
+      "model": "400B",
+      "description": "Practice: 4 selected requests of large",
+      "file": "cases/large-practice.json",
+      "source_case_id": "fixed_learning_400b_sustained_standard_s101_practice_q0_q1_q6_q7",
+      "sha256": "8cd8b31494d407d872f74c3bebc349ce71c7e4d95ca3c88bffb6ffaf9e9ae213",
+      "request_count": 4,
+      "source_public_case": "large"
+    }
+  ]
+}
